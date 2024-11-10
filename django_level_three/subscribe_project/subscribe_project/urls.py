@@ -1,5 +1,5 @@
 """
-URL configuration for basicforms project.
+URL configuration for subscribe_project project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -15,11 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from basicapp import views
+from django.urls import path, include
+from subscribe_app import views
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
-    path('formpage/', views.form_name_view, name='form_name'),
+    path('customers/', include('subscribe_app.urls')),
+    path('subscribe/', views.subscribe, name='subcribe'),
+
 ]
